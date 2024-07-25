@@ -19,6 +19,8 @@ export default async function({login, q, imports, data, account}, {enabled = fal
     console.debug(`metrics/compute/${login}/plugins > 16personalities > loading ${url}`)
     await page.goto(url, {waitUntil: imports.puppeteer.events})
 
+    await page.waitForSelector(".card__bg");
+
     //Fetch raw data
     const raw = await page.evaluate(() => ({
       color: getComputedStyle(document.querySelector(".card__bg")).backgroundColor, //eslint-disable-line no-undef
