@@ -17,7 +17,7 @@ export default async function({login, q, imports, data, account}, {enabled = fal
     console.debug(`metrics/compute/${login}/plugins > 16personalities > started ${await browser.version()}`)
     const page = await browser.newPage()
     console.debug(`metrics/compute/${login}/plugins > 16personalities > loading ${url}`)
-    await page.goto(url, {waitUntil: imports.puppeteer.events})
+    await page.goto(url, {waitUntil: "load", timeout: 120000 });
 
     await page.waitForSelector(".card__bg");
 
